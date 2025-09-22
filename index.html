@@ -12,10 +12,22 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      flex-direction: column;
       background: linear-gradient(135deg, #0056a6, #007bff);
       color: #333;
     }
 
+    /* Logo top-left */
+    header {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+    }
+    header img {
+      height: 40px;
+    }
+
+    /* Login card */
     .login-box {
       background: #fff;
       border-radius: 12px;
@@ -23,20 +35,13 @@
       width: 360px;
       box-shadow: 0 6px 24px rgba(0,0,0,0.2);
       animation: fadeIn 0.8s ease;
-      position: relative;
-    }
-
-    .login-box img.logo {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      height: 32px;
+      margin-top: 80px; /* push down so it doesn't overlap logo */
     }
 
     .login-box h1 {
       font-size: 1.4rem;
       font-weight: 600;
-      margin: 3rem 0 1.5rem 0;
+      margin-bottom: 1.5rem;
       color: #0056a6;
       text-align: center;
     }
@@ -80,6 +85,7 @@
       text-decoration: underline;
     }
 
+    /* Loader */
     #loader {
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
@@ -107,22 +113,19 @@
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
-
-    @media (prefers-color-scheme: dark) {
-      body { background: linear-gradient(135deg, #002c57, #004080); }
-      .login-box { background: #222; color: white; }
-      .login-box h1 { color: #66aaff; }
-      .login-box input { background: #333; color: white; border: 1px solid #555; }
-    }
   </style>
 </head>
 <body>
+  <!-- Logo top-left -->
+  <header>
+    <img src="logo.png" alt="Strato Logo">
+  </header>
+
+  <!-- Loader -->
   <div id="loader"><div class="spinner"></div></div>
 
+  <!-- Login Box -->
   <div class="login-box" style="display:none;">
-    <!-- Add your uploaded logo -->
-    <img src="strat 1.jpg" alt="Strato Logo" class="logo">
-
     <h1>Customer Login</h1>
     <form>
       <input type="text" placeholder="Username" required>
@@ -133,11 +136,10 @@
   </div>
 
   <script>
+    // Simple loader script
     window.onload = () => {
-      setTimeout(() => {
-        document.getElementById("loader").style.display = "none";
-        document.querySelector(".login-box").style.display = "block";
-      }, 1500);
+      document.getElementById("loader").style.display = "none";
+      document.querySelector(".login-box").style.display = "block";
     };
   </script>
 </body>
