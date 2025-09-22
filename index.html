@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Inspired Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* Reset & font */
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
+    body, html { height: 100%; }
+
+    /* Background gradient */
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #4facfe, #00f2fe);
+      color: #333;
+    }
+
+    /* Login card */
+    .login-box {
+      background: white;
+      border-radius: 16px;
+      padding: 2rem;
+      width: 300px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+
+    .login-box h1 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .login-box input {
+      width: 100%;
+      padding: 10px;
+      margin: 0.5rem 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    .login-box button {
+      width: 100%;
+      padding: 10px;
+      background: #4facfe;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .login-box button:hover {
+      background: #00c6ff;
+    }
+
+    /* Spinner overlay */
+    #loader {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgba(255,255,255,0.9);
+      z-index: 1000;
+    }
+
+    .spinner {
+      border: 6px solid #ddd;
+      border-top: 6px solid #4facfe;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Dark mode */
+    @media (prefers-color-scheme: dark) {
+      body { background: linear-gradient(135deg, #1f1c2c, #928dab); }
+      .login-box { background: #222; color: white; }
+      .login-box input { background: #333; color: white; border: 1px solid #555; }
+    }
+  </style>
+</head>
+<body>
+  <div id="loader"><div class="spinner"></div></div>
+
+  <div class="login-box" style="display:none;">
+    <h1>Welcome Back</h1>
+    <form>
+      <input type="text" placeholder="Username" required>
+      <input type="password" placeholder="Password" required>
+      <button type="submit">Sign In</button>
+    </form>
+  </div>
+
+  <script>
+    // Simulate loading
+    window.onload = () => {
+      setTimeout(() => {
+        document.getElementById("loader").style.display = "none";
+        document.querySelector(".login-box").style.display = "block";
+      }, 1500);
+    };
+  </script>
+</body>
+</html>
