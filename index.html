@@ -5,11 +5,9 @@
   <title>Strato-Inspired Login</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    /* Reset & fonts */
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, Helvetica, sans-serif; }
     body, html { height: 100%; }
 
-    /* Background - Strato style */
     body {
       display: flex;
       justify-content: center;
@@ -18,22 +16,29 @@
       color: #333;
     }
 
-    /* Login card */
     .login-box {
       background: #fff;
       border-radius: 12px;
-      padding: 2.5rem;
-      width: 340px;
+      padding: 2rem 2.5rem;
+      width: 360px;
       box-shadow: 0 6px 24px rgba(0,0,0,0.2);
-      text-align: center;
       animation: fadeIn 0.8s ease;
+      position: relative;
+    }
+
+    .login-box img.logo {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      height: 32px;
     }
 
     .login-box h1 {
       font-size: 1.4rem;
       font-weight: 600;
-      margin-bottom: 1.5rem;
+      margin: 3rem 0 1.5rem 0;
       color: #0056a6;
+      text-align: center;
     }
 
     .login-box input {
@@ -68,13 +73,13 @@
       font-size: 0.85rem;
       color: #0056a6;
       text-decoration: none;
+      text-align: center;
     }
 
     .login-box .forgot:hover {
       text-decoration: underline;
     }
 
-    /* Spinner overlay */
     #loader {
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
@@ -103,7 +108,6 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Dark mode (fallback only) */
     @media (prefers-color-scheme: dark) {
       body { background: linear-gradient(135deg, #002c57, #004080); }
       .login-box { background: #222; color: white; }
@@ -113,11 +117,12 @@
   </style>
 </head>
 <body>
-  <!-- Loader -->
   <div id="loader"><div class="spinner"></div></div>
 
-  <!-- Login Box -->
   <div class="login-box" style="display:none;">
+    <!-- Add your uploaded logo -->
+    <img src="strat 1.jpg" alt="Strato Logo" class="logo">
+
     <h1>Customer Login</h1>
     <form>
       <input type="text" placeholder="Username" required>
@@ -128,7 +133,6 @@
   </div>
 
   <script>
-    // Fake loading effect
     window.onload = () => {
       setTimeout(() => {
         document.getElementById("loader").style.display = "none";
